@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberfrequency Labs — Independent Software Studio</title>
+  <meta name="description" content="Cyberfrequency Labs is an independent software studio building small, sharp apps and tools — tuned to a different frequency.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2305071c'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='bold' fill='%2335e0d0' text-anchor='middle'%3ECF%3C/text%3E%3C/svg%3E">
+  <meta property="og:title" content="Cyberfrequency Labs">
+  <meta property="og:description" content="An independent software studio broadcasting after dark.">
+  <meta property="og:image" content="car-night.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Chakra+Petch:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Chakra Petch', sans-serif;
+      background: #05071c;
+      color: #d4daf5;
+    }
+    a { color: #35e0d0; text-decoration: none; transition: color 0.2s, box-shadow 0.2s; }
+    a:hover { color: #a9fff5; }
+    .page {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: url('car-night.png') center bottom / cover no-repeat #05071c;
+    }
+    .scrim-top {
+      position: absolute; left: 0; right: 0; top: 0; height: 55vh;
+      background: linear-gradient(180deg, rgba(4,6,24,0.92) 0%, rgba(4,6,24,0.55) 55%, rgba(4,6,24,0) 100%);
+      pointer-events: none;
+    }
+    .scrim-bottom {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 22vh;
+      background: linear-gradient(0deg, rgba(4,6,24,0.9) 0%, rgba(4,6,24,0) 100%);
+      pointer-events: none;
+    }
+    nav {
+      position: relative; z-index: 2;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: clamp(20px, 3vw, 32px) clamp(24px, 5vw, 56px);
+    }
+    .wordmark {
+      font-family: 'Orbitron', sans-serif; font-weight: 900;
+      font-size: 15px; letter-spacing: 5px; color: #35e0d0;
+      text-shadow: 0 0 12px rgba(53,224,208,0.8);
+    }
+    nav .links a {
+      color: #c5cdf2; font-size: 14px; letter-spacing: 3px; font-weight: 500;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+    }
+    nav .links a:hover { color: #35e0d0; }
+    main {
+      position: relative; z-index: 2;
+      flex: 1;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+      padding: clamp(24px, 6vh, 72px) 24px 0;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif; font-weight: 900;
+      font-size: clamp(34px, 6.5vw, 84px);
+      line-height: 1.04; letter-spacing: 0.04em;
+      background: linear-gradient(180deg, #f2f7ff 0%, #c3d8f5 30%, #6f8fd0 47%, #232f66 50%, #7d99e0 54%, #d8e8ff 80%, #ffffff 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 4px 0 rgba(8,10,30,0.95)) drop-shadow(0 0 28px rgba(122,94,255,0.5));
+    }
+    .labs {
+      font-family: 'Orbitron', sans-serif; font-weight: 500;
+      font-size: clamp(15px, 1.8vw, 24px);
+      letter-spacing: clamp(12px, 2vw, 26px); text-indent: clamp(12px, 2vw, 26px);
+      color: #35e0d0;
+      text-shadow: 0 0 14px rgba(53,224,208,0.9), 0 1px 8px rgba(0,0,0,0.8);
+      margin-top: 16px;
+    }
+    .tagline {
+      max-width: 540px; margin-top: 24px;
+      font-size: clamp(15px, 1.3vw, 17px); line-height: 1.7; font-weight: 400;
+      color: #d4daf5; text-shadow: 0 1px 8px rgba(0,0,0,0.85);
+    }
+    .cta {
+      display: inline-block; margin-top: 32px;
+      padding: 15px 40px;
+      border: 1.5px solid #35e0d0; border-radius: 4px;
+      color: #a9fff5; font-size: 14px; font-weight: 600; letter-spacing: 3px;
+      background: rgba(4,6,24,0.55);
+      box-shadow: 0 0 16px rgba(53,224,208,0.35);
+    }
+    .cta:hover { box-shadow: 0 0 26px rgba(53,224,208,0.65); color: #ffffff; }
+    footer {
+      position: relative; z-index: 2;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+      padding: clamp(18px, 3vh, 24px) clamp(24px, 5vw, 56px);
+      font-size: 13px; letter-spacing: 2px; color: #9aa2cf;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+    }
+    footer a { text-shadow: 0 0 10px rgba(53,224,208,0.6); }
+    @media (max-width: 560px) {
+      footer { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="scrim-top"></div>
+    <div class="scrim-bottom"></div>
+    <nav>
+      <div class="wordmark">CFL</div>
+      <div class="links"><a href="mailto:hello@cyberfrequencylabs.com">CONTACT</a></div>
+    </nav>
+    <main>
+      <h1>CYBERFREQUENCY</h1>
+      <div class="labs">LABS</div>
+      <p class="tagline">An independent software studio broadcasting after dark. Small, sharp apps and tools — tuned to a different frequency.</p>
+      <a class="cta" href="mailto:hello@cyberfrequencylabs.com">GET IN TOUCH</a>
+    </main>
+    <footer>
+      <span>© 2026 CYBERFREQUENCY LABS</span>
+      <a href="mailto:hello@cyberfrequencylabs.com">HELLO@CYBERFREQUENCYLABS.COM</a>
+    </footer>
+  </div>
+</body>
+</html>
